@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MusicMEMO</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- ===== ヘッダー（スライドショー） ===== -->
+<header class="slideshow">
+  <div class="slides">
+    <img src="images/header1.jpg" alt="">
+    <img src="images/header2.jpg" alt="">
+    <img src="images/header3.jpg" alt="">
+    <img src="images/header4.jpg" alt="">
+    <img src="images/header5.jpg" alt="">
+    <img src="images/header6.jpg" alt="">
+    <img src="images/header7.jpg" alt="">
+    <img src="images/header8.jpg" alt="">
+    <img src="images/header9.jpg" alt="">
+    <img src="images/header10.jpg" alt="">
+    <img src="images/header11.jpg" alt="">
+    <img src="images/header12.jpg" alt="">
+    <img src="images/header13.jpg" alt="">
+    <img src="images/header14.jpg" alt="">
+    <!-- 無限ループ用にもう一周 -->
+    <img src="images/header1.jpg" alt="">
+    <img src="images/header2.jpg" alt="">
+    <img src="images/header3.jpg" alt="">
+    <img src="images/header4.jpg" alt="">
+    <img src="images/header5.jpg" alt="">
+    <img src="images/header6.jpg" alt="">
+    <img src="images/header7.jpg" alt="">
+    <img src="images/header8.jpg" alt="">
+    <img src="images/header9.jpg" alt="">
+    <img src="images/header10.jpg" alt="">
+    <img src="images/header11.jpg" alt="">
+    <img src="images/header12.jpg" alt="">
+    <img src="images/header13.jpg" alt="">
+    <img src="images/header14.jpg" alt="">
+  </div>
+</header>
+
+<!-- ===== 右上ボタン ===== -->
+<div class="nav-top">
+  <a href="nextLive.html" class="panel-btn">ライブ予定</a>
+  <a href="list.html" class="panel-btn">ライブ一覧</a>
+</div>
+
+<!-- ===== メイン ===== -->
+<main>
+   
+  <section id="upcomingLive" class="upcoming-live"></section>
+  <h1>音楽手帳</h1>
+
+<!-- フォーム切替ボタン -->
+<div class="form-toggle-btns">
+  <button type="button" id="memoBtn" class="toggle-btn active">ライブメモ</button>
+  <button type="button" id="nextLiveFormBtn" class="toggle-btn">今後のライブ</button>
+</div>
+
+  <!-- ライブメモフォーム（既存） -->
+  <form id="liveForm" class="active-form">
+    <label>日付:
+      <input type="date" name="date" required>
+    </label>
+
+    <label>アーティスト名:
+      <input type="text" name="artist" required>
+    </label>
+
+    <label>会場:
+      <input type="text" name="venue" required>
+    </label>
+
+    <label>セットリスト:</label>
+    <button type="button" id="addSetlistBtn" class="add-btn">曲を追加</button>
+
+    <div id="setlistContainer">
+      <div class="setlist-item">
+        <input type="text" name="setlist[]" placeholder="曲名">
+        <button type="button" class="remove-btn">削除</button>
+      </div>
+    </div>
+
+    <button type="submit">追加</button>
+  </form>
+
+  <!-- 今後のライブフォーム（追加、初期非表示） -->
+  <form id="nextLiveForm" class="hidden-form">
+    <label>日付:
+      <input type="date" name="date" required>
+    </label>
+
+    <label>アーティスト名:
+      <input type="text" name="artist" required>
+    </label>
+
+    <label>会場:
+      <input type="text" name="venue" required>
+    </label>
+
+    <button type="submit">追加</button>
+  </form>
+</main>
+
+<footer>
+  ©MusicMEMO
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>

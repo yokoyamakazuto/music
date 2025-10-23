@@ -1,0 +1,278 @@
+/* ===== 全体 ===== */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #fff8e1;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px; /* フッター分の余白 */
+}
+
+h1 {
+  text-align: center;
+  color: #f57f17;
+  margin: 30px 0;
+}
+
+/* ===== 右上ボタン ===== */
+.nav-top {
+  position: absolute;
+  top: 190px; /* ヘッダー下に */
+  right: 20px;
+  z-index: 10;
+}
+
+.panel-btn {
+  background: #ffb300;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+}
+
+.panel-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+/* ===== ヘッダー（スライドショー） ===== */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: calc(14 * 2 * 20vw); /* 14枚 x2 無限ループ用 */
+  animation: scrollLoop 60s linear infinite;
+}
+
+.slides img {
+  width: 20vw;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== ライブカード ===== */
+.live-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px 40px 20px;
+  max-height: none; /* 高さ制限なしでスクロール可能 */
+}
+
+.live-card {
+  background: linear-gradient(135deg, #fff9c4, #ffd54f);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.live-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.live-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.live-card p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+/* 編集・削除ボタン */
+.live-card button.edit-btn,
+.live-card button.delete-btn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 5px;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+.live-card button.edit-btn {
+  background: linear-gradient(45deg, #42a5f5, #1e88e5);
+}
+
+.live-card button.delete-btn {
+  background: linear-gradient(45deg, #f44336, #e53935);
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 0;
+  border-radius: 8px;
+}
+
+.live-card button.edit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(66,165,245,0.4);
+}
+
+.live-card button.delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(244,67,54,0.4);
+}
+
+/* ===== モーダル ===== */
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 223, 186, 0.8);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fffef2;
+  padding: 25px 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  position: relative;
+  border: 2px solid #ffd54f;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #f57f17;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin: 5px 0;
+  white-space: pre-line;
+  font-size: 1rem;
+  color: #555;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #f57f17;
+  transition: transform 0.2s;
+}
+
+.modal-content .close:hover {
+  transform: rotate(90deg) scale(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content p strong {
+  color: #ff8a65;
+}
+
+/* ===== 削除確認モーダル ===== */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-modal.active {
+  display: flex;
+}
+
+.confirm-modal .modal-content {
+  background: #fff8e1;
+  padding: 20px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  max-width: 300px;
+}
+
+.confirm-modal p {
+  margin: 0 0 20px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.confirm-modal .modal-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 10px;
+  color: #fff;
+}
+
+.confirm-modal .confirm-yes {
+  background: #f44336;
+}
+
+.confirm-modal .confirm-no {
+  background: #9e9e9e;
+}
+
+.confirm-modal .modal-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+/* ===== フッター ===== */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #ffb300;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}

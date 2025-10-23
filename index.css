@@ -1,0 +1,359 @@
+/* ===== 全体 ===== */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #fff8e1;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px; /* フッター分の余白 */
+}
+
+h1 {
+  text-align: center;
+  color: #f57f17;
+  margin-bottom: 30px;
+}
+
+/* ===== ヘッダー（スライドショー） ===== */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: calc(14 * 2 * 20vw); /* 14枚 x2 無限ループ用 */
+  animation: scrollLoop 60s linear infinite;
+}
+
+.slides img {
+  width: 20vw;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== 右上ボタン ===== */
+.nav-top {
+  position: absolute;
+  top: 190px; /* ヘッダー下に */
+  right: 20px;
+  z-index: 10;
+}
+
+.panel-btn {
+  background: #ffb300;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+}
+
+.panel-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+/* ===== 左上 次のライブ予定カード ===== */
+#upcomingLive {
+    position: absolute;
+    top: 200px; /* ヘッダー下 */
+    left: 20px;
+    z-index: 5;
+    width: 200px;
+}
+
+#upcomingLive .upcoming-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #f57f17;
+    margin-bottom: 5px;
+}
+
+#upcomingLive .live-card {
+    background: linear-gradient(135deg, #fff59d, #42a5f5);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+    cursor: default;
+}
+
+#upcomingLive .live-card h3 {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+}
+
+#upcomingLive .live-card p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ===== フォーム ===== */
+form {
+  background: #fff3e0;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+textarea { resize: vertical; }
+
+button[type="submit"] {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border: none;
+  background: linear-gradient(45deg, #ffe57f, #ffb300);
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== セットリスト曲追加部分 ===== */
+#setlistContainer {
+  margin-bottom: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+#setlistContainer .setlist-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#setlistContainer input[type="text"] {
+  flex: 1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.remove-btn, .add-btn {
+  margin-left: 5px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+.remove-btn { background: #f44336; }
+.add-btn { background: linear-gradient(45deg, #42a5f5, #1e88e5); margin-top: 5px; }
+.add-btn:hover, .remove-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== ライブカード ===== */
+.live-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.live-card {
+  background: linear-gradient(135deg, #fff9c4, #ffd54f);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.live-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.live-card h3 { margin: 0 0 5px 0; font-size: 1.2rem; }
+.live-card p { margin: 5px 0; font-size: 0.95rem; }
+
+/* ===== フッター ===== */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #ffb300;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}
+
+/* ===== 今後のライブフォーム切替用 ===== */
+.hidden-form { display: none; }
+.active-form { display: block; }
+
+/* ===== フォーム切替ボタン ===== */
+.form-toggle-btns {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.toggle-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  margin: 0 5px;
+  cursor: pointer;
+  background: #f44336;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.toggle-btn.active { background: #1e88e5; }
+.toggle-btn:hover { transform: scale(1.05); }
+
+/* ===== 右上ライブ予定ボタン切替時 ===== */
+#nextLiveBtn.active {
+  background: linear-gradient(45deg, #42a5f5, #1e88e5);
+}
+#nextLiveBtn.active:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+
+/* ===== 通常（大きい画面） ===== */
+.panel-btn, .toggle-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+/* ===== 中サイズ画面 ===== */
+@media (max-width: 1200px) {
+  .panel-btn, .toggle-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== 小サイズ画面 ===== */
+@media (max-width: 900px) {
+  .panel-btn, .toggle-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== 超小サイズ画面（スマホ） ===== */
+@media (max-width: 600px) {
+  .panel-btn, .toggle-btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== 左上ライブカード 通常（大きい画面） ===== */
+#upcomingLive {
+  width: 300px;
+}
+
+#upcomingLive .live-card {
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+#upcomingLive .live-card h3 {
+  font-size: 1rem;
+}
+
+#upcomingLive .live-card p {
+  font-size: 0.85rem;
+}
+
+/* ===== 中サイズ画面 ===== */
+@media (max-width: 1200px) {
+  #upcomingLive {
+    width: 180px;
+  }
+  #upcomingLive .live-card {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+  #upcomingLive .live-card h3 {
+    font-size: 0.95rem;
+  }
+  #upcomingLive .live-card p {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== 小サイズ画面 ===== */
+@media (max-width: 900px) {
+  #upcomingLive {
+    width: 150px;
+  }
+  #upcomingLive .live-card {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+  #upcomingLive .live-card h3 {
+    font-size: 0.9rem;
+  }
+  #upcomingLive .live-card p {
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== 超小サイズ画面（スマホ） ===== */
+@media (max-width: 600px) {
+  #upcomingLive {
+    width: 120px;
+  }
+  #upcomingLive .live-card {
+    padding: 4px;
+    font-size: 0.75rem;
+  }
+  #upcomingLive .live-card h3 {
+    font-size: 0.8rem;
+  }
+  #upcomingLive .live-card p {
+    font-size: 0.7rem;
+  }
+}
+
+
