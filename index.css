@@ -332,7 +332,7 @@ footer {
     position: relative; /* 絶対配置解除 */
     top: auto;
     left: auto;
-    transform: none;
+    transform: translateX(15px);
     display: flex;
     justify-content: center;
     gap: 10px;
