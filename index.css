@@ -70,38 +70,38 @@ h1 {
 
 /* ===== 左上 次のライブ予定カード ===== */
 #upcomingLive {
-    position: absolute;
-    top: 180px; /* 初期位置を少し上に */
-    left: 20px;
-    z-index: 5;
-    width: 200px;
+  position: absolute;
+  top: 180px; /* 初期位置 */
+  left: 20px;
+  z-index: 5;
+  width: 200px;
 }
 
 #upcomingLive .upcoming-title {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #f57f17;
-    margin-bottom: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #f57f17;
+  margin-bottom: 5px;
 }
 
 #upcomingLive .live-card {
-    background: linear-gradient(135deg, #fff59d, #42a5f5);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    font-size: 0.9rem;
-    cursor: default;
-    word-break: break-word; /* 長い文字も折り返す */
+  background: linear-gradient(135deg, #fff59d, #42a5f5);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
+  cursor: default;
+  word-break: break-word; /* 長い文字も折り返す */
 }
 
 #upcomingLive .live-card h3 {
-    font-size: 1rem;
-    margin: 0 0 5px 0;
+  font-size: 1rem;
+  margin: 0 0 5px 0;
 }
 
 #upcomingLive .live-card p {
-    font-size: 0.85rem;
-    margin: 0;
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 /* ===== フォーム ===== */
@@ -312,14 +312,53 @@ footer {
   }
 }
 
-/* 小サイズ画面（スマホ） */
+/* ===== スマホ（縦並び＋ボタン中央） ===== */
 @media (max-width: 600px) {
+  /* 右上ボタン・次のライブを縦にして中央寄せ */
+  .nav-top {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
   #upcomingLive {
-    width: 140px;
-    top: 180px;  /* 被らないように少し下げる */
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #upcomingLive .live-card {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+  #upcomingLive .live-card h3 {
+    font-size: 0.8rem;
+  }
+  #upcomingLive .live-card p {
+    font-size: 0.7rem;
+  }
+}
+
+/* ===== iPhone SEなど極小画面 ===== */
+@media (max-width: 375px) {
+  .nav-top {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #upcomingLive {
+    width: 100%;
+    margin: 8px 0;
   }
   #upcomingLive .live-card {
-    padding: 5px;
+    padding: 8px;
     font-size: 0.75rem;
   }
   #upcomingLive .live-card h3 {
@@ -327,23 +366,5 @@ footer {
   }
   #upcomingLive .live-card p {
     font-size: 0.65rem;
-  }
-}
-
-/* iPhone SEなど極小画面 */
-@media (max-width: 375px) {
-  #upcomingLive {
-    width: 130px;
-    top: 210px;  /* 画面に応じて微調整 */
-  }
-  #upcomingLive .live-card {
-    padding: 4px;
-    font-size: 0.7rem;
-  }
-  #upcomingLive .live-card h3 {
-    font-size: 0.65rem;
-  }
-  #upcomingLive .live-card p {
-    font-size: 0.6rem;
   }
 }
