@@ -312,15 +312,11 @@ footer {
   }
 }
 
-/* ===== 超小サイズ画面（スマホ） ===== */
+/* 小サイズ画面（スマホ） */
 @media (max-width: 600px) {
-  .panel-btn, .toggle-btn {
-    padding: 4px 8px;
-    font-size: 0.75rem;
-  }
-
   #upcomingLive {
     width: 140px;
+    top: 180px;  /* 被らないように少し下げる */
   }
   #upcomingLive .live-card {
     padding: 5px;
@@ -334,15 +330,11 @@ footer {
   }
 }
 
-/* ===== iPhone SEなど極小画面 ===== */
+/* iPhone SEなど極小画面 */
 @media (max-width: 375px) {
-  .panel-btn {
-    font-size: 0.7rem;
-    padding: 3px 6px;
-  }
-
   #upcomingLive {
     width: 130px;
+    top: 210px;  /* 画面に応じて微調整 */
   }
   #upcomingLive .live-card {
     padding: 4px;
