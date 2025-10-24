@@ -25,17 +25,18 @@ h1 {
 .panel-btn {
   background: #ffb300;
   color: #fff;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 4px 10px; /* さらに小さく */
+  border-radius: 16px; /* 少し角を丸める */
   font-weight: bold;
+  font-size: 0.75rem; /* 文字サイズも小さめ */
   text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: all 0.2s;
 }
 
 .panel-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* ===== ヘッダー（スライドショー） ===== */

@@ -72,7 +72,9 @@ function renderList() {
         // カードクリックで詳細表示
         card.addEventListener('click', () => {
             detailTitle.textContent = data.artist;
-            detailBody.innerHTML = `日付: ${data.date}<br>会場: ${data.venue}<br>${data.setlist ? 'セットリスト:<br>' + data.setlist.map((s, i) => `${i+1}. ${s}`).join('<br>') : ''}`;
+            let setlistHTML = data.setlist ? 'セットリスト:<br>' + data.setlist.map((s, i) => `${i+1}. ${s}`).join('<br>') : '';
+            let spotifyHTML = data.spotifyLink ? `<br>Spotify: <a href="${data.spotifyLink}" target="_blank">プレイリスト</a>` : '';
+            detailBody.innerHTML = `日付: ${data.date}<br>会場: ${data.venue}<br>${setlistHTML}${spotifyHTML}`;
             detailModal.classList.add('active');
         });
     });

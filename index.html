@@ -51,17 +51,16 @@
 
 <!-- ===== メイン ===== -->
 <main>
-   
   <section id="upcomingLive" class="upcoming-live"></section>
   <h1>音楽手帳</h1>
 
-<!-- フォーム切替ボタン -->
-<div class="form-toggle-btns">
-  <button type="button" id="memoBtn" class="toggle-btn active">ライブメモ</button>
-  <button type="button" id="nextLiveFormBtn" class="toggle-btn">今後のライブ</button>
-</div>
+  <!-- フォーム切替ボタン -->
+  <div class="form-toggle-btns">
+    <button type="button" id="memoBtn" class="toggle-btn active">ライブメモ</button>
+    <button type="button" id="nextLiveFormBtn" class="toggle-btn">今後のライブ</button>
+  </div>
 
-  <!-- ライブメモフォーム（既存） -->
+  <!-- ライブメモフォーム -->
   <form id="liveForm" class="active-form">
     <label>日付:
       <input type="date" name="date" required>
@@ -85,10 +84,13 @@
       </div>
     </div>
 
+    <label>Spotifyプレイリストリンク:</label>
+    <input type="url" name="spotifyLink" placeholder="https://open.spotify.com/playlist/..." />
+
     <button type="submit">追加</button>
   </form>
 
-  <!-- 今後のライブフォーム（追加、初期非表示） -->
+  <!-- 今後のライブフォーム -->
   <form id="nextLiveForm" class="hidden-form">
     <label>日付:
       <input type="date" name="date" required>

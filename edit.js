@@ -16,6 +16,7 @@ const data = saved[index];
 editForm.date.value = data.date;
 editForm.artist.value = data.artist;
 editForm.venue.value = data.venue;
+editForm.spotifyLink.value = data.spotifyLink || ''; // ← Spotifyリンク読み込み
 setlistContainer.innerHTML = '';
 data.setlist.forEach(song=>{
     const div = document.createElement('div');
@@ -90,11 +91,17 @@ editForm.addEventListener('submit', e => {
             data.artist = formData.get('artist');
             data.venue = formData.get('venue');
             data.setlist = formData.getAll('setlist').filter(s => s.trim() !== '');
+            data.spotifyLink = formData.get('spotifyLink') || ''; // ← Spotifyリンク保存
             saved[index] = data;
             localStorage.setItem('lives', JSON.stringify(saved));
 
+            // ポップアップにSpotifyリンクも表示
+            let popupText = '保存しました！';
+            
+
             Swal.fire({
-                title: '保存しました！',
+                title: popupText,
+                html: true,
                 showConfirmButton: true,
                 confirmButtonText: 'OK',
                 icon: undefined,
@@ -108,10 +115,6 @@ editForm.addEventListener('submit', e => {
         }
     });
 });
-
-
-
-
 
 // 戻るボタン
 document.getElementById('backBtn').addEventListener('click', ()=>{

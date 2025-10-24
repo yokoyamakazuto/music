@@ -79,7 +79,8 @@ form.addEventListener('submit', e => {
         venue: formData.get('venue'),
         setlist: Array.from(setlistContainer.querySelectorAll('input[name="setlist[]"]'))
                        .map(i => i.value.trim())
-                       .filter(v => v)
+                       .filter(v => v),
+        spotifyLink: formData.get('spotifyLink') || ''
     };
 
     saved.push(data);
@@ -155,6 +156,12 @@ const upcomingLiveContainer = document.getElementById('upcomingLive');
 
 function renderUpcomingLive() {
     let upcomingLives = JSON.parse(localStorage.getItem('upcomingLives') || '[]');
+    const today = new Date().toISOString().split('T')[0];
+
+    // 過去のライブを削除
+    upcomingLives = upcomingLives.filter(live => live.date >= today);
+    localStorage.setItem('upcomingLives', JSON.stringify(upcomingLives));
+
     if (upcomingLives.length === 0) {
         upcomingLiveContainer.innerHTML = `<p class="no-live">次のライブ予定はありません</p>`;
         return;

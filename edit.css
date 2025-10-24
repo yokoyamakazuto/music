@@ -146,3 +146,15 @@ footer {
   font-weight: bold;
   margin-top: 40px;
 }
+
+/* =====Spotify===== */
+.text-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
