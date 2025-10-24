@@ -37,29 +37,44 @@ h1 {
   100% { transform: translateX(-50%); }
 }
 
-/* ===== 右上ボタン ===== */
-.nav-top {
-  position: absolute;
-  top: 190px; /* ヘッダー下に */
+/* ===== 右上「ホームへ戻る」ボタン固定（ヘッダー下） ===== */
+.home-nav {
+  position: fixed;   /* ウィンドウ右上に固定 */
+  top: 170px;        /* ヘッダーの下 */
   right: 20px;
-  z-index: 10;
+  z-index: 100;
 }
 
-.panel-btn {
+.home-nav .panel-btn {
   background: #ffb300;
   color: #fff;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 4px 10px;
+  border-radius: 14px;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: all 0.2s;
 }
 
-.panel-btn:hover {
+.home-nav .panel-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
+
+/* ===== スマホ用 ===== */
+@media (max-width: 600px) {
+  .home-nav {
+    top: 190px;    /* スマホ画面では少し下に */
+    right: 15px;
+  }
+
+  .home-nav .panel-btn {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+}
+
 
 /* ===== mainとライブリストのスクロール調整 ===== */
 main {

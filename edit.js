@@ -98,10 +98,8 @@ editForm.addEventListener('submit', e => {
             // ポップアップにSpotifyリンクも表示
             let popupText = '保存しました！';
             
-
             Swal.fire({
                 title: popupText,
-                html: true,
                 showConfirmButton: true,
                 confirmButtonText: 'OK',
                 icon: undefined,

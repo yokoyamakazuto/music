@@ -314,24 +314,39 @@ footer {
 
 /* ===== スマホ（縦並び＋ボタン中央） ===== */
 @media (max-width: 600px) {
-  /* 右上ボタン・次のライブを縦にして中央寄せ */
-  .nav-top {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    justify-content: center;
-    margin: 10px 0;
+  /* タイトル（音楽手帳）を一番上 */
+  h1 {
+    text-align: center;
+    margin: 15px 0;
+    position: relative; /* 絶対配置解除 */
+    z-index: auto;
   }
 
-  #upcomingLive {
-    position: relative;
+  /* スライドショーはそのまま */
+  .slideshow {
+    height: 150px; /* 少し縮小して見やすく */
+  }
+
+  /* ボタンを中央寄せで横並び */
+  .nav-top {
+    position: relative; /* 絶対配置解除 */
     top: auto;
     left: auto;
-    width: 100%;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin: 10px 0;
+    width: 100%;
+  }
+
+  /* 次のライブカードをタイトル・ボタンの下に縦並び */
+  #upcomingLive {
+    position: relative; /* 絶対配置解除 */
+    top: auto;
+    left: auto;
+    width: 90%;
+    margin: 10px auto;
   }
 
   #upcomingLive .live-card {
@@ -348,14 +363,17 @@ footer {
 
 /* ===== iPhone SEなど極小画面 ===== */
 @media (max-width: 375px) {
+  h1 {
+    margin: 10px 0;
+  }
+
   .nav-top {
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 8px;
   }
 
   #upcomingLive {
-    width: 100%;
-    margin: 8px 0;
+    width: 95%;
+    margin: 8px auto;
   }
   #upcomingLive .live-card {
     padding: 8px;
