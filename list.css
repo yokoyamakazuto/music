@@ -37,12 +37,16 @@ h1 {
   100% { transform: translateX(-50%); }
 }
 
-/* ===== 右上「ホームへ戻る」ボタン固定（ヘッダー下） ===== */
+/* ===== 右上「ホームへ戻る」ボタン（ヘッダー下） ===== */
 .home-nav {
-  position: fixed;   /* ウィンドウ右上に固定 */
-  top: 170px;        /* ヘッダーの下 */
-  right: 20px;
-  z-index: 100;
+  position: relative;   /* fixedをやめる */
+  top: auto;            /* 上からの絶対指定解除 */
+  right: 20px;          /* 右寄せの余白 */
+  margin: 10px 20px;    /* ヘッダー下の余白 */
+  display: flex;
+  justify-content: flex-end; /* 右寄せ */
+  gap: 8px;
+  z-index: 10;
 }
 
 .home-nav .panel-btn {
@@ -65,8 +69,7 @@ h1 {
 /* ===== スマホ用 ===== */
 @media (max-width: 600px) {
   .home-nav {
-    top: 190px;    /* スマホ画面では少し下に */
-    right: 15px;
+    right: 15px; /* 右端に微調整 */
   }
 
   .home-nav .panel-btn {
@@ -74,6 +77,7 @@ h1 {
     font-size: 0.75rem;
   }
 }
+
 
 
 /* ===== mainとライブリストのスクロール調整 ===== */
